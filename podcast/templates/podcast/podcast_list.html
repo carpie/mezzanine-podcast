@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}
+Podcasts
+{% endblock %}
+
+{% block main %}
+<ul>
+{% for pc in podcasts %}
+    <li>{{ pc.date }} <a href="{{ pc.slug }}">{{ pc.title }}</a></li>
+{% endfor %}
+</ul>
+
+{% endblock %}
+
+{% block right_panel %}
+{% endblock %}

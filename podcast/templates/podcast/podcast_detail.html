@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load mezzanine_tags i18n %}
+{% block title %}
+{{ podcast.title }}
+{% endblock %}
+
+{% block main %}
+
+<div>
+    <em>Author:</em> {{ podcast.author }}<br/>
+    <em>Location:</em> {{ podcast.location }}<br/>
+    <em>Recorded:</em> {{ podcast.date }}<br/>
+</div>
+<div>
+    <img src="{{ podcast.notes_icon }}" style="float: left"/>
+    {{ podcast.notes|richtext_filter|safe }}
+</div>
+<div><img src="{{ podcast.audio_icon }}"/>
+    <audio controls preload="auto">
+        <source src="{{ podcast.audio_file_aac }}" type="audio/mp4"/>
+        <source src="{{ podcast.audio_file_ogg }}" type="audio/ogg" />
+        Your browser does not support the audio tag.  Consider using
+        <a href="http://www.mozilla.org/en-US/firefox/new/">Firefox</a> or
+        <a href="https://www.google.com/chrome">Chrome</a>.
+        Alternatively, you can download the audio file below and listen with a
+        media player.
+    </audio>
+    <div>
+        Download: <a href="{{ podcast.audio_file_aac }}">mp4/aac</a> |
+        <a href="{{ podcast.audio_file_ogg }}">ogg/vorbis</a>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block right_panel %}
+{% endblock %}
