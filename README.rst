@@ -34,7 +34,7 @@ Option 1 - Install into system packages or virtualenv::
 Option 2 - Install in your mezzanine project root::
 
     wget https://github.com/carpie/mezzanine-podcast/tarball/master -O - | tar -zxvf -
-    cp -r mezzanine-podcast-<hash>/podcast <path_to_your_mez_prj>/
+    cp -r carpie-mezzanine-podcast-<hash>/podcast <path_to_your_mez_prj>/
 
 
 Usage
