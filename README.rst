@@ -62,10 +62,22 @@ To use:
     ./manage.py migrate podcast
 
 Now, the podcast list page should be available at the `podcasts/` url.  You
-can now add podcasts through the normal admin interface.
+can now add podcasts through the normal admin interface.  If you add a page
+with the same name as the slug (e.g. `podcasts`) the contents of the page
+will be shown before the podcast list when the slug is visited.
+
+
+Customization
+-------------
 
 To override the default templates, create the template files
 ``templates/podcast/podcast_list.html`` and
 ``templates/podcast/podcast_detail.html`` in your mezzanine project.
 
+To change the slug from the default of `podcasts`:
+
+* Add ``PODCAST_SLUG = my_slug`` to `local_settings.py`.
+* Change the slug in `urls.py` to match, or set up the url to use the one
+  imported from settings.
+* Create a Page with a title matching the slug.
 

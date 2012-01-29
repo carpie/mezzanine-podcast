@@ -5,9 +5,21 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.template import RequestContext
 
+from mezzanine.conf import settings
+from mezzanine.pages.models import RichTextPage
 from mezzanine.template.loader import select_template
 
 from models import Podcast
+
+def podcast_page():
+    """
+    Return the Podcast page from the pages app.
+    """
+    try:
+        slug = getattr(settings, "PODCAST_SLUG", "podcasts")
+        return RichTextPage.objects.get(slug=slug)
+    except RichTextPage.DoesNotExist:
+        return None
 
 
 def podcast_list(request, tag=None, year=None, month=None, username=None,
@@ -17,7 +29,7 @@ def podcast_list(request, tag=None, year=None, month=None, username=None,
     """
     templates = []
     podcasts = Podcast.objects.published()
-    context = {"podcasts": podcasts}
+    context = {"page": podcast_page(), "podcasts": podcasts}
     templates.append(template)
     request_context = RequestContext(request, context)
     t = select_template(templates, request_context)
