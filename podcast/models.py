@@ -1,8 +1,9 @@
 from django.db import models
 
 # Create your models here.
-import settings
 from django.db import models
+
+from mezzanine.conf import settings
 from mezzanine.core.models import Displayable, Ownable, RichText
 from mezzanine.core.fields import RichTextField
 

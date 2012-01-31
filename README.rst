@@ -81,3 +81,6 @@ To change the slug from the default of `podcasts`:
   imported from settings.
 * Create a Page with a title matching the slug.
 
+If you are audio files are larger than the 10 MB default, you can change
+the upload limit by setting ``FILEBROWSER_MAX_UPLOAD_SIZE`` (in bytes) in
+`local_settings.py`.
